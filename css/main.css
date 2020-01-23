@@ -1,0 +1,48 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    
+  }
+
+ body{
+    background-color:rgb(241, 242, 250);
+ }
+  
+  .logo{
+      color: rgb(206, 78, 75, 0.91);
+   font-weight: bold;
+      size: 32px;
+      font-style: italic;
+  }
+  .subtitulos{
+      font-size: 15px;
+      
+  }
+  footer{
+    background-color: rgb(241, 242, 250);
+}
+
+  .title-footer{
+      color: rbg(0,0,0,0.38);
+      size: 15px;
+  }
+
+ footer li a{
+     color: rbg(0,0,0,0.87)
+ }
+
+.img-minha-sky{
+    width: 48px;
+    float: left;
+    margin-right: 20px;
+}
+.logos{ 
+ 
+    background-size: 160px 54px;
+    width: 160px;
+    height: 54px;
+ 
+   
+}
