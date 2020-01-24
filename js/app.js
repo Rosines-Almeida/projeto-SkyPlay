@@ -1,9 +1,7 @@
 $(document).ready(function () {
-    $('#carouselExampleInterval').carousel(4)
-
-
-    // const url = 'https://sky-frontend.herokuapp.com/movies';
-    const url = 'https://sky-frontend.herokuapp.com/moviess';
+    $('#carouselIndicators').carousel()
+    const url = 'https://sky-frontend.herokuapp.com/movies';
+    // const url = 'https://sky-frontend.herokuapp.com/moviess';
     $.ajax({
         type: 'GET',
         url: url,
@@ -12,14 +10,14 @@ $(document).ready(function () {
         error: error
     });
 
+    let movies = "";
     function loadMovies(data) {
         movies = data;
-        console.log(movies);
         moviesHighlight(movies);
         moviesMenu(movies);
     }
     function error() {
-        $(".main").hide();
+        $("main").hide();
         var erroMensage = `
         <div class="card mb-3"">
         <div class="row no-gutters">
@@ -38,54 +36,53 @@ $(document).ready(function () {
         $(".erroMensagem").append(erroMensage)
     }
 
-    let movies = "";
 
     function moviesHighlight(movies) {
-        moviesHighlight = movies.filter(function (i) {
-            return i.type == "highlights"
+        moviesHighlight = movies.filter(function (item) {
+            return item.type == "highlights"
         })
         let primeiroItem = moviesHighlight[0].items[0].title;
-        moviesHighlight[0].items.map(function (i) {
-            if (i.title == primeiroItem) {
+        moviesHighlight[0].items.map(function (item) {
+            if (item.title == primeiroItem) {
                 let poster = `<div class="carousel-item active img-carousel" data-interval="10000">
-                    <img  class="d-block w-100" height="300px" src="${i.images[0].url}" alt="${i.title}"> </div>`
+                    <img  title= "${item.title}" class="d-block w-100" height="300px" src="${item.images[0].url}" alt="${item.title}"> </div>`
                 $('.carousel-inner').append(poster)
             }
             else {
                 let poster = `<div class="carousel-item" data-interval="10000">
-                    <img title= "${i.title}" class="d-block w-100" height="300px" src="${i.images[0].url}" alt="${i.title}"> </div>`
+                    <img title= "${item.title}" class="d-block w-100" height="300px" src="${item.images[0].url}" alt="${item.title}"> </div>`
                 $('.carousel-inner').append(poster)
             }
         })
     }
 
     function moviesMenu(movies) {
-        moviesCarrosel = movies.filter(function (i) {
-            return i.type == "carousel-portrait"
+        moviesCarrosel = movies.filter(function (item) {
+            return item.type == "carousel-portrait"
         })
-        moviesCarrosel[0].movies.map(function (i) {
-            if (i.categories.indexOf("Ação") != -1) {
+        moviesCarrosel[0].movies.map(function (movie) {
+            if (movie.categories.indexOf("Ação") != -1) {
                 let poster =
                     `<div class="m-2">
-               <img src="${i.images[0].url}" alt="${i.title}" width="190" height="200"> </div>`
+               <img src="${movie.images[0].url}"  title= "${movie.title}"alt="${movie.title}" width="190" height="200"> </div>`
                 $('.acao').append(poster)
             }
-            else if (i.categories.indexOf("Suspense") != -1) {
+            else if (movie.categories.indexOf("Suspense") != -1) {
                 let poster =
                     `<div class="m-2" col-3>
-               <img src="${i.images[0].url}" alt="${i.title}" width="190" height="200"> </div>`
+               <img src="${movie.images[0].url}"  title= "${movie.title}" alt="${movie.title}" width="190" height="200"> </div>`
                 $('.suspense').append(poster)
             }
-            else if (i.categories.indexOf("Comédia") != -1) {
+            else if (movie.categories.indexOf("Comédia") != -1) {
                 let poster =
                     `<div class="m-2">
-               <img src="${i.images[0].url}" alt="${i.title}" width="150" height="200"> </div>`
+               <img src="${movie.images[0].url}"  title= "${movie.title}"alt="${movie.title}" width="150" height="200"> </div>`
                 $('.comedia').append(poster)
             }
             else {
                 let poster =
                     `<div class="m-2">
-               <img src="${i.images[0].url}" alt="${i.title}" width="150" height="200"> </div>`
+               <img src="${movie.images[0].url}"  title= "${movie.title}" alt="${movie.title}" width="150" height="200"> </div>`
                 $('.outros').append(poster)
             }
         })
