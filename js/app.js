@@ -1,7 +1,7 @@
 $(document).ready(function () {
     $('#carouselIndicators').carousel()
-    const url = 'https://sky-frontend.herokuapp.com/movies';
-    // const url = 'https://sky-frontend.herokuapp.com/moviess';
+    // const url = 'https://sky-frontend.herokuapp.com/movies';
+    const url = 'https://sky-frontend.herokuapp.com/moviess';
     $.ajax({
         type: 'GET',
         url: url,
@@ -19,7 +19,7 @@ $(document).ready(function () {
     function error() {
         $("main").hide();
         var erroMensage = `
-        <div class="card mb-3"">
+        <div class="card mb-3 d-none d-lg-block">
         <div class="row no-gutters">
           <div class="col-md-4">
           <div class="card-body d-flex justify-content-end">
@@ -32,7 +32,22 @@ $(document).ready(function () {
             </div>
           </div>
         </div>
-      </div>`
+      </div>
+
+      <div class="card mb-3 d-xl-none d-lg-none d-md-none">
+      <div class="row no-gutters">
+        <div class="col-md-4">
+        <div class="card-body d-flex justify-content-center">
+        <i class="fas fa-exclamation-triangle"></i>
+        </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card-body d-flex justify-content-center">
+            <p class="card-text"> Sistema Temporariamente Indisponível</p> 
+          </div>
+        </div>
+      </div>
+    </div>`
         $(".erroMensagem").append(erroMensage)
     }
 
