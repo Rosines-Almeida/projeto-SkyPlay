@@ -2,7 +2,8 @@ $(document).ready(function () {
     $('#carouselExampleInterval').carousel(4)
 
 
-    const url = 'https://sky-frontend.herokuapp.com/movies';
+    // const url = 'https://sky-frontend.herokuapp.com/movies';
+    const url = 'https://sky-frontend.herokuapp.com/moviess';
     $.ajax({
         type: 'GET',
         url: url,
@@ -18,6 +19,31 @@ $(document).ready(function () {
         moviesMenu(movies);
     }
     function error(e) {
+        var erroMensage = `
+        <div class="card mb-3"">
+        <div class="row no-gutters">
+          <div class="col-md-4">
+          <div class="card-body d-flex justify-content-end">
+          <i class="fas fa-exclamation-triangle"></i>
+          </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card-body">
+              <p class="card-text"> Sistema Temporariamente Indisponível</p> 
+            </div>
+          </div>
+        </div>
+      </div>`
+
+        // <div class="error row d-flex justify-content-center">
+        // <div col-12>
+        // <p class="">Sistema Temporariamente Indisponível</p>
+        // </div>
+        // </div>`
+     
+        $(".erroMensagem").append(erroMensage)
+          $(".main").hide();
+          
         console.log(e)
     }
     let movies = "";
@@ -50,22 +76,17 @@ $(document).ready(function () {
 
         moviesCarrosel[0].movies.map(function (i) {
             if(i.categories.indexOf("Ação")  != -1){ 
-                let classificacao = `<div class=" row col-12 acao">
-                <div class="col-12">
-                <p>Ação</p>
-              </div>
-              </div>`
-              $('.menu').append(classificacao)
+                 
                 let poster =  
                 `<div class="m-2">
-               <img src="${i.images[0].url}" alt="${i.title}" width="150" height="200"> </div>`
+               <img src="${i.images[0].url}" alt="${i.title}" width="190" height="200"> </div>`
 
                       $('.acao').append(poster)
             }
             else if(i.categories.indexOf("Suspense")  != -1){ 
                 let poster =  
-                `<div class="m-2">
-               <img src="${i.images[0].url}" alt="${i.title}" width="150" height="200"> </div>`
+                `<div class="m-2" col-3>
+               <img src="${i.images[0].url}" alt="${i.title}" width="190" height="200"> </div>`
 
                       $('.suspense').append(poster)
             }
