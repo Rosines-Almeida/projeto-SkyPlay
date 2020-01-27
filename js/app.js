@@ -81,25 +81,25 @@ $(document).ready(function () {
             if (movie.categories.indexOf("Ação") != -1) {
                 let poster =
                     `<div class="m-2">
-               <img src="${movie.images[0].url}"  title= "${movie.title}"alt="${movie.title}" width="190" height="200"> </div>`
+               <img class="poster" src="${movie.images[0].url}"  title= "${movie.title}"alt="${movie.title}" "> </div>`
                 $('.acao').append(poster)
             }
             else if (movie.categories.indexOf("Suspense") != -1) {
                 let poster =
                     `<div class="m-2" col-3>
-               <img src="${movie.images[0].url}"  title= "${movie.title}" alt="${movie.title}" width="190" height="200"> </div>`
+               <img class="poster" src="${movie.images[0].url}"  title= "${movie.title}" alt="${movie.title}" width="190" height="200"> </div>`
                 $('.suspense').append(poster)
             }
             else if (movie.categories.indexOf("Comédia") != -1) {
                 let poster =
                     `<div class="m-2">
-               <img src="${movie.images[0].url}"  title= "${movie.title}"alt="${movie.title}" width="150" height="200"> </div>`
+               <img class="poster" src="${movie.images[0].url}"  title= "${movie.title}"alt="${movie.title}" width="150" height="200"> </div>`
                 $('.comedia').append(poster)
             }
             else {
                 let poster =
                     `<div class="m-2">
-               <img src="${movie.images[0].url}"  title= "${movie.title}" alt="${movie.title}" width="150" height="200"> </div>`
+               <img class="poster" src="${movie.images[0].url}"  title= "${movie.title}" alt="${movie.title}" width="150" height="200"> </div>`
                 $('.outros').append(poster)
             }
         })
