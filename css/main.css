@@ -23,8 +23,8 @@ header a {
 	color: red
 }
 
-.nav-link li a:active {
-	color: #db524f;
+header li a:hover {
+	border-bottom: 5px solid #db524f;
 }
 
 .carousel-inner {
@@ -87,7 +87,6 @@ footer a {
 
 .img-minha-sky {
 	width: 48px;
-	float: left;
 	margin-right: 20px;
 }
 

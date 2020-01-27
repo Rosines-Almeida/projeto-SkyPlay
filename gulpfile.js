@@ -23,12 +23,12 @@ gulp.task('minify-css', function() {
         minifyCSS: true,
         minifyURLs: true,
       }))
-      .pipe(gulp.dest('./build/js'))
+      .pipe(gulp.dest('./build/html'))
   });
 
  
   gulp.task('minify-js', function() {
     return gulp.src('./js/app.js')
       .pipe(uglify())
-      .pipe(gulp.dest('./build'));
+      .pipe(gulp.dest('./build/js'));
   });

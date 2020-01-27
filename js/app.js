@@ -1,7 +1,7 @@
 $(document).ready(function () {
     $('#carouselIndicators').carousel()
-    // const url = 'https://sky-frontend.herokuapp.com/movies';
-    const url = 'https://sky-frontend.herokuapp.com/moviess';
+    const url = 'https://sky-frontend.herokuapp.com/movies';
+ 
     $.ajax({
         type: 'GET',
         url: url,
@@ -11,11 +11,13 @@ $(document).ready(function () {
     });
 
     let movies = "";
+
     function loadMovies(data) {
         movies = data;
         moviesHighlight(movies);
         moviesMenu(movies);
     }
+
     function error() {
         $("main").hide();
         var erroMensage = `
